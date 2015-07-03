@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="register.css">
+		<script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="http://www.amcharts.com/lib/3/gauge.js"></script>
+<script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+
+        <script>
+		
+var x= 43;
+
+var gaugeChart = AmCharts.makeChart( "chartdiv", {
+  "type": "gauge",
+  "theme": "light",
+  "axes": [ {
+    "axisThickness": 1,
+    "axisAlpha": 0.2,
+    "tickAlpha": 0.2,
+    "valueInterval": 20,
+    "bands": [ {
+      "color": "#84b761",
+      "endValue": 90,
+      "startValue": 0
+    }, {
+      "color": "#fdd400",
+      "endValue": 130,
+      "startValue": 90
+    }, {
+      "color": "#cc4748",
+      "endValue": 220,
+      "innerRadius": "95%",
+      "startValue": 130
+    } ],
+    "bottomText": "0 km/h",
+    "bottomTextYOffset": -20,
+    "endValue": 220
+  } ],
+   "arrows": [ {"value":10},{"value":20} ],
+  "export": {
+    "enabled": true
+  }
+} );
+
+//setInterval( randomValue, 2000 );
+randomValue();
+// set random value
+function randomValue() {
+  var value = Math.round( Math.random() * 200 );
+  if ( gaugeChart ) {
+    if ( gaugeChart.arrows ) {
+      if ( gaugeChart.arrows[ 0 ] ) {
+        if ( gaugeChart.arrows[ 0 ].setValue ) {
+          gaugeChart.arrows[ 0 ].setValue( value );
+          gaugeChart.axes[ 0 ].setBottomText( value + " km/h" );
+        }
+      }
+    }
+  }
+}
+
+            function moda()
+                              		
+                              		{
+                              		$("#myModal").modal('show');
+                              		
+                              		
+                              		}
+									
+									function validateForm()
+	{
+		 event.preventDefault();
+  			
+  			
+	
+	
+	alert("hello");
+	
+    	// result is 'Hello world!'
+  		
+  		
+  		
+        var na = document.forms["myForm"]["username"].value;
+
+	var mmnna = document.forms["myForm"]["rollll"].value;
+
+		localStorage.setItem("user_name_aut",na);
+		
+		localStorage.setItem("rollno_user",mmnna);
+	
+		window.open ('quiz.html','_self',false);
+		
+		
+		}
+        </script>
+    </head>
+    
+    <body>
+        <div class="navbar navbar-default navbar-inverse navbar-static-top">
+            <div class="container">
+			
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"><span>Brand</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" id="guide">
+					<div id="chartdiv"></div>
+                        <h1 class="text-center">SRJNA QUIZ</h1>
+                        <div class="page-header text-success">
+                            <h1>Guidelines for the quiz
+                                <br>
+                                <small>-All questions are compulsory</small>
+                                <br>
+                                <small>-No negative marking</small>
+                                <br>
+                                <small>-Bonus questions after completing the test in time.</small>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Click Here to get registered for the test</h1>
+                        <a class="btn btn-lg btn-primary"
+                        onclick="moda()">Click me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="section section-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>Footer header</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+                            <br>Ut enim ad minim veniam, quis nostrud</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="text-info text-right">
+                            <br>
+                            <br>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-12 hidden-lg hidden-md hidden-sm text-left">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 hidden-xs text-right">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Welcome to SRJNA online portal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Provide these details to get into the test</p>
+                        <form role="form" name="myForm" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputEmail1">Full Name</label>
+                                <input class="form-control" name="username" id="exampleInputEmail1" placeholder="Enter Name">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputEmail1"  >Roll No</label>
+                                <input class="form-control" name="rollll" id="exampleInputEmail1" placeholder="Enter Roll NO">
+                            </div>
+                            <div class="form-group">
+                                <label for="sel1">Select class</label>
+                                <select class="form-control" id="sel1">
+                                    <option>class 6</option>
+                                    <option>class 7</option>
+                                    <option>class 8</option>
+									<option>class 9</option>
+									<option>class 10</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="validateForm()">Submit</button>
+                        </form>
+                        <p class="text-warning">
+                            <small>If you don't save, your changes will be lost.</small>
+                        </p>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

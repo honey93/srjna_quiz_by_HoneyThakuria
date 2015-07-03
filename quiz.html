@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="quiz1.css">
+    </head>
+    
+    <body>
+        <div class="navbar navbar-default navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span>Brand</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="Untitled.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row" id="headsuper">
+                    <div class="col-md-12" id="headtop">
+                        <div class="page-header" id="headas">
+                            <h1>Quiz-competition
+                                <font color="#777777">
+                                    <span style="font-size: 23.3999996185303px; line-height: 23.3999996185303px;">All questions are compulsory, No negative marking</span>
+                                </font>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+				<form name="myForm">
+                <div class="row">
+                    <div class="col-md-12 pr">
+                        <h1 contenteditable="true" id="question">Q1 When you mix oil with water, what happens ?</h1>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" id="a" name="optradio" value="1">
+                                <p id="optiona">option1</p>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" id="b" name="optradio" value="2"><p id="optionb">Option 2</p></label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" id="c" name="optradio" value="3"><p id="optionc">Option 3</p></label>
+                        </div>
+					    <div class="radio">
+                            <label>
+                                <input type="radio" id="d" name="optradio" value="4"><p id="optiond">Option 4</p></label>
+                        </div>
+                        <a class="btn btn-danger btn-lg" onclick="right_ans()" data-toggle="button" id="btn">Next Question</a>
+                    </div>
+                </div>
+				</form>
+            </div>
+        </div>
+        <footer class="section section-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>Footer header</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+                            <br>Ut enim ad minim veniam, quis nostrud</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="text-info text-right">
+                            <br>
+                            <br>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-12 hidden-lg hidden-md hidden-sm text-left">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 hidden-xs text-right">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+		
+		var net_sahi_kia = 0;
+		var net_attempt_kia = 0;
+		var total_all = 0;
+		var total_dur = 0;
+		
+		function right_ans()
+		
+		{
+		
+		//alert("hello");
+		var mw = document.forms["myForm"]["optradio"].value;
+		//alert(mw);
+		
+		
+		//alert(mw);
+		 var no_sec = localStorage.getItem("type_ques");
+		 var wright = localStorage.getItem("corr_ans");
+		 
+		      var hard_got =  localStorage.getItem("assume_hard");
+		 
+		 //alert("hardness got is " + hard_got);
+		 
+		 
+		 res = mw - wright;
+		 //alert(res);
+		 if ( res == 0)
+		 {
+		    c[no_sec].trueorfalse.push(1);
+		    c[no_sec].sahi_kia = c[no_sec].sahi_kia +1;
+		 
+		      // alert("you got it");
+		 
+		 
+		 if(hard_got == 1)
+		 {
+		   stages[0].sahi_kia = stages[0].sahi_kia +1;
+		   stages[0].attempt_kia = stages[0].attempt_kia +1;
+		   stages[0].exact_marks = stages[0].exact_marks +1;
+		 }
+		 
+		 if(hard_got == 2)
+		 {
+		   stages[1].sahi_kia = stages[1].sahi_kia +1;
+		   stages[1].attempt_kia = stages[1].attempt_kia +1;
+		   stages[1].exact_marks = stages[1].exact_marks +2;
+		 }
+		 
+		 if(hard_got == 3)
+		 {
+		  stages[2].sahi_kia = stages[2].sahi_kia +1;
+		   stages[2].attempt_kia = stages[2].attempt_kia +1;
+		   stages[2].exact_marks = stages[2].exact_marks +5;
+		 }
+		 
+		 
+		 
+		 }
+		 else
+		 {
+		 
+		 if(mw == "")
+		
+		{
+		//alert("aila tu to nikla baila");
+		var cat_notattempt = localStorage.getItem("nahi_kia");
+		
+		c[cat_notattempt].not_attempt = c[cat_notattempt].not_attempt + 1;
+		}
+		 else
+		 {
+		 
+		c[no_sec].trueorfalse.push(0);
+		// alert("wrong you were");
+		c[no_sec].galat_kia = c[no_sec].galat_kia +1;
+		
+		
+		
+		
+		if(hard_got == 1)
+		 {
+		 //  stages[0].sahi_kia = stages[0].sahi_kia +1;
+		   stages[0].attempt_kia = stages[0].attempt_kia +1;
+		  // stages[0].exact_marks = stages[0].exact_marks +1;
+		 }
+		 
+		 if(hard_got == 2)
+		 {
+		   //stages[1].sahi_kia = stages[1].sahi_kia +1;
+		   stages[1].attempt_kia = stages[1].attempt_kia +1;
+		 //  stages[1].exact_marks = stages[1].exact_marks +2;
+		 }
+		 
+		 if(hard_got == 3)
+		 {
+		 // stages[2].sahi_kia = stages[2].sahi_kia +1;
+		   stages[2].attempt_kia = stages[2].attempt_kia +1;
+		  // stages[2].exact_marks = stages[2].exact_marks +5;
+		 }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		}
+		}
+		
+		document.getElementById('a').checked = false;
+		 document.getElementById('b').checked = false;
+		 document.getElementById('c').checked = false;
+		 document.getElementById('d').checked = false;
+		
+		nextq();
+		
+		}
+		Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+            
+//Parse.initialize("0wcxPuVUCdT2D4mnwlQ79Avo2iC4hYaUlxKJOGYV", "UZIAxj5AmJ3LB8prRiXqTSym0rRSlJQmqq5oDCJw");
+//Variable ct is for counting total no. of questions
+var ct=1;
+var rand;
+//Making objects for each table
+//Variable lvl1,lvl2,lvl3 signifies the no. of that levle question of that class
+//Sequence array is storing the sequence which are already used
+//count is for counting the no. of questions of that class
+
+var starttime =0;
+var person = [];
+var rt = 0;
+var total_all = 0;
+var total_dur = 0;
+
+
+var Level1={
+
+name:"level_1",
+exact_marks:0,
+exact_time:0,
+exact_no:0,
+exact_dur:0,
+sahi_kia:0,
+galat_kia:0,
+attempt_kia:0
+
+};
+
+var Level2={
+
+name:"level_2",
+exact_marks:0,
+exact_time:0,
+exact_no:0,
+exact_dur:0,
+sahi_kia:0,
+galat_kia:0,
+attempt_kia:0
+
+};
+
+
+var Level3={
+
+name:"level_3",
+exact_marks:0,
+exact_time:0,
+exact_no:0,
+exact_dur:0,
+sahi_kia:0,
+galat_kia:0,
+attempt_kia:0
+
+};
+
+
+
+
+var stages=[Level1,Level2,Level3];
+
+
+
+
+var log={
+name:"Logical",
+lvl1:0,
+dur:0,
+lvl2:0,
+lvl3:0,
+tot: 0,
+sahi_kia:0,
+galat_kia:0,
+sec_attempt:0,
+count:0,
+seq:[],
+not_attempt:0,
+assocc:[],
+hard: [],
+trueorfalse: [],
+lincr:function(k){switch(k){
+                  case 1:this.lvl1++;
+                  break;
+                  case 2:this.lvl2++;
+                  break;
+                  default:this.lvl3++;
+                  }}
+};
+var att={name:"Attention",
+lvl1:0,
+dur:0,
+lvl2:0,
+lvl3:0,
+tot:0,
+count:0,
+seq:[],
+sahi_kia:0,
+sec_attempt:0,
+galat_kia:0,
+not_attempt:0,
+assocc: [],
+hard: [],
+trueorfalse: [],
+lincr:function(k){switch(k){
+                  case 1:this.lvl1++;
+                  break;
+                  case 2:this.lvl2++;
+                  break;
+                  default:this.lvl3++;
+                  }}
+};
+var mem={name:"Memory",
+lvl1:0,
+lvl2:0,
+dur:0,
+tot:0,
+lvl3:0,
+count:0,
+seq:[],
+sahi_kia:0,
+sec_attempt:0,
+galat_kia:0,
+assocc: [],
+not_attempt:0,
+hard: [],
+trueorfalse: [],
+lincr:function(k){switch(k){
+                  case 1:this.lvl1++;
+                  break;
+                  case 2:this.lvl2++;
+                  break;
+                  default:this.lvl3++;
+                  }}
+};
+var sit={name:"Situation",
+lvl1:0,
+lvl2:0,
+tot:0,
+dur:0,
+lvl3:0,
+count:0,
+seq:[],
+assocc: [],
+galat_kia:0,
+sec_attempt:0,
+not_attempt:0,
+sahi_kia:0,
+hard: [],
+trueorfalse: [],
+lincr:function(k){switch(k){
+                  case 1:this.lvl1++;
+                  break;
+                  case 2:this.lvl2++;
+                  break;
+                  default:this.lvl3++;
+                  }}
+};
+//Generating Random_number in variable rand
+rand=Math.floor(Math.random()*4);
+//Array of objects of tables to access the class randomly
+localStorage.setItem("type_ques",rand);
+var c=[att,log,mem,sit];
+//Making parse object
+var que=Parse.Object.extend(c[rand].name);
+var q=new que();
+//Making Parse Query
+var fs=new Parse.Query(que);
+fs.equalTo("Seq",1);
+fs.find({
+//success starts
+success:function(results){
+var owe=results[0];
+document.getElementById("question").innerHTML=owe.get('Question');
+document.getElementById("optiona").innerHTML=owe.get('Option1');
+document.getElementById("optionb").innerHTML=owe.get('Option2');
+document.getElementById("optionc").innerHTML=owe.get('Option3');
+document.getElementById("optiond").innerHTML=owe.get('Option4');
+
+
+
+
+var today = new Date();	
+
+starttime = today.getTime();
+
+ person[rt] = starttime;
+ 
+//inserting 
+c[rand].assocc.push(rt);
+
+c[rand].hard.push(owe.get('HardnessLevel'));
+
+//storing hardness level
+localStorage.setItem("assume_hard",owe.get('HardnessLevel'));
+
+rt = rt + 1;
+localStorage.setItem("nahi_kia",rand);
+localStorage.setItem("corr_ans",owe.get('CorrectAnswer'));
+
+
+//Increasing the lvl type of that class
+c[rand].lincr(owe.get('HardnessLevel'));
+//Pushing the used sequence in the seq array so that it cant come again
+c[rand].seq.push(1);}
+//ending the success
+
+,error:function(error){
+//The request failed
+}
+});
+
+
+//The function is for counting the rows of that class so that the sequence can be generated randomly
+//We are using callback function because the n object is destroyed
+function counting(callback,x){
+var ct=Parse.Object.extend(c[x].name);
+			var query=new Parse.Query(ct);
+			query.notEqualTo("objectId","a");
+			query.count({
+  success: function(count) {
+    // The count request succeeded. Show the count
+    n=count;
+	console.log("in query"+ n);
+	if(callback != null && callback != undefined){
+              callback(n);
+        }
+  },
+  error: function(error) {
+    // The request failed
+  }
+});
+}
+
+
+
+
+//Calling onclick function 
+
+function nextq(){
+
+
+
+
+if (ct == 1)
+
+{
+
+
+alert("It's enough, go and see results");
+
+var today = new Date();	
+
+starttime = today.getTime();
+
+ person[rt] = starttime;
+ 
+
+for (i=0; i<c.length; i++)
+
+ {
+
+  net_sahi_kia = net_sahi_kia + c[i].sahi_kia;
+  net_attempt_kia = net_attempt_kia + c[i].sahi_kia + c[i].galat_kia;
+  
+  c[i].sec_attempt = c[i].sahi_kia + c[i].galat_kia;
+ 
+ var jj =0;
+   //alert(c[i].not_attempt);
+  // alert(c[i].sahi_kia);
+   while(c[i].assocc[jj]!=null)
+   {
+           var x = c[i].assocc[jj];
+      sec = (person[x+1] - person[x] - 0)/1000;
+	  
+	  c[i].dur = c[i].dur + sec; 
+	  
+	  if( c[i].hard[jj] == 1 )
+	  {
+	  stages[0].exact_dur =  stages[0].exact_dur + sec;
+	  }
+	  
+	  if( c[i].hard[jj] == 2 )
+	  {
+	   stages[1].exact_dur =  stages[1].exact_dur + sec;
+	  }
+	  
+	  if( c[i].hard[jj] == 3 )
+	  {
+	   stages[2].exact_dur =  stages[2].exact_dur + sec;
+	  }
+	  
+	  
+	  
+	  
+	  
+	  
+	if((c[i].hard[jj] == 1) && (c[i].trueorfalse[jj]==1))
+   {
+    c[i].tot = c[i].tot + 1;
+    }
+	
+	 if((c[i].hard[jj] == 2) && (c[i].trueorfalse[jj]==1))
+   {
+   c[i].tot = c[i].tot + 2;
+   }
+	
+	 if((c[i].hard[jj] == 3) && (c[i].trueorfalse[jj]==1))
+   {
+    c[i].tot = c[i].tot + 5;
+   
+   
+   }
+    //   window.alert('You survived ' + sec + ' seconds !' + 'in question ' + c[i].seq[jj] + ' in the section' + c[i].name);  
+        		jj++;
+   	 
+	 
+	 
+	 
+	 
+	 }
+
+}
+
+
+//alert("net_sahi_kia");
+//alert(net_sahi_kia);
+//alert("net_attemp_kia");
+//alert(net_attempt_kia);
+
+
+for(i=0;i<c.length;i++)
+{
+
+var school_nam = "Results";
+var acc_factor = 0;
+var acc_f = 0;
+var fact = 0;
+var chu = 0;
+event.preventDefault();
+  			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+			
+			
+
+   		  	total_all = total_all + c[i].tot; 
+		    total_dur =  total_dur + c[i].dur;
+            fact = (-1)*(0.7)*(c[i].dur);
+			chu = Math.pow(2.7, fact);
+			
+			//alert("e raise ki value");
+			//alert(chu);
+			acc_factor = (c[i].tot)*((c[i].sahi_kia)/(c[i].sec_attempt))*chu;
+		//	alert("net_score");
+			//alert(acc_factor);
+                acc_f  =  ((c[i].sahi_kia)/(c[i].sec_attempt));			
+			
+var GameScore = Parse.Object.extend(school_nam);
+		var gameScore = new GameScore();	
+		
+		
+        gameScore.set("section_name", c[i].name);
+		gameScore.set("total_marks", c[i].tot);
+		gameScore.set("total_time_taken", c[i].dur);
+		
+		gameScore.set("sahi_kia", c[i].sahi_kia);
+		gameScore.set("attempt_kia", c[i].sec_attempt);
+		gameScore.set("net_score", acc_factor);
+		gameScore.set("acc_f", acc_f);
+        		
+		
+		
+		gameScore.set("Name",localStorage.getItem("user_name_aut"));
+		gameScore.set("Rollno",localStorage.getItem("rollno_user"));
+		
+		gameScore.save(null, {
+  		success: function(gameScore) {
+    	
+		//alert("done buddy");
+    	
+    	
+    	
+    	
+    	//event.preventDefault();
+    	//var q = localStorage.getItem("lastname");
+    	//gameScore.set("username", p);
+		//gameScore.set("password", q);
+    	//gameScore.set("cheatMode", false);
+        //gameScore.set("skills", ["row", "flying"]);
+        //gameScore.save();
+        //alert('New object created with objectId: ' + gameScore.id);
+    	
+    	
+  		},
+  		error: function(gameScore, error) {
+    	alert('Failed to create new object, with error code: ' + error.message);
+  		}
+						 }); 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for(i=0;i<stages.length;i++)
+{
+
+var laval_nam = stages[i].name; 
+var acc_factor = 0;
+var acc_f = 0;
+var fact = 0;
+var chu = 0;
+event.preventDefault();
+  			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+			
+			
+
+   		  	fact = (-1)*(0.7)*(stages[i].exact_dur);
+			chu = Math.pow(2.7, fact);
+			
+			//alert("e raise ki value");
+			//alert(chu);
+			acc_factor = (stages[i].exact_marks)*((stages[i].sahi_kia)/(stages[i].attempt_kia))*chu;
+			//alert("net_score");
+			//alert(acc_factor);
+                acc_f  =  ((stages[i].sahi_kia)/(stages[i].attempt_kia));			
+			
+var GameScore = Parse.Object.extend("Results");
+		var gameScore = new GameScore();	
+		
+		
+        gameScore.set("section_name", laval_nam);
+		gameScore.set("total_marks", stages[i].exact_marks);
+		gameScore.set("total_time_taken", stages[i].exact_dur);
+		
+		gameScore.set("sahi_kia", stages[i].sahi_kia);
+		gameScore.set("attempt_kia", stages[i].attempt_kia);
+		gameScore.set("net_score", acc_factor);
+		gameScore.set("acc_f", acc_f);
+        		
+		
+		
+		gameScore.set("Name",localStorage.getItem("user_name_aut"));
+		gameScore.set("Rollno",localStorage.getItem("rollno_user"));
+		
+		gameScore.save(null, {
+  		success: function(gameScore) {
+    	
+		//alert("done buddy");
+    	
+    	
+    	
+    	
+    	//event.preventDefault();
+    	//var q = localStorage.getItem("lastname");
+    	//gameScore.set("username", p);
+		//gameScore.set("password", q);
+    	//gameScore.set("cheatMode", false);
+        //gameScore.set("skills", ["row", "flying"]);
+        //gameScore.save();
+        //alert('New object created with objectId: ' + gameScore.id);
+    	
+    	
+  		},
+  		error: function(gameScore, error) {
+    	alert('Failed to create new object, with error code: ' + error.message);
+  		}
+						 }); 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+
+var acc_factor = 0;
+var acc_f = 0;
+var fact = 0;
+var chu = 0;
+
+event.preventDefault();
+  			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+school_namee ="Results"
+
+var GameScore = Parse.Object.extend(school_namee);
+		var gameScore = new GameScore();	
+
+
+        fact = (-1)*(0.7)*(total_dur);
+			chu = Math.pow(2.7, fact);
+			
+			//alert("e raise ki value");
+			//alert(chu);
+			acc_factor = (total_all)*((net_sahi_kia)/(net_attempt_kia))*chu;
+			//alert("net_score");
+			//alert(acc_factor);
+                acc_f  =  ((net_sahi_kia)/(net_attempt_kia));			
+			
+	
+
+   gameScore.set("section_name", "total_all");
+	gameScore.set("total_marks", total_all);
+		gameScore.set("total_time_taken", total_dur);
+		
+		gameScore.set("sahi_kia", net_sahi_kia);
+		gameScore.set("attempt_kia", net_attempt_kia);
+		gameScore.set("net_score", acc_factor);
+		gameScore.set("acc_f", acc_f);
+        		
+		
+		
+		gameScore.set("Name",localStorage.getItem("user_name_aut"));
+		gameScore.set("Rollno",localStorage.getItem("rollno_user"));
+		
+		gameScore.save(null, {
+  		success: function(gameScore) {
+    	
+		alert("total_done buddy");
+    	
+    	
+    	
+    	
+    	//event.preventDefault();
+    	//var q = localStorage.getItem("lastname");
+    	//gameScore.set("username", p);
+		//gameScore.set("password", q);
+    	//gameScore.set("cheatMode", false);
+        //gameScore.set("skills", ["row", "flying"]);
+        //gameScore.save();
+        //alert('New object created with objectId: ' + gameScore.id);
+    	
+    	
+  		},
+  		error: function(gameScore, error) {
+    	alert('Failed to create new object, with error code: ' + error.message);
+  		}
+						 }); 
+		
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
+//checking if the question set is completed
+
+
+if(ct==120)
+
+{
+
+	var school_name = "mgd";
+
+
+
+event.preventDefault();
+  			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+
+
+var GameScore = Parse.Object.extend(school_name);
+//var GameScore = Parse.Object.extend("GameScore");
+var query = new Parse.Query(GameScore);
+query.equalTo("Name", "mahesh");
+query.find({
+  success: function(results) {
+    alert("hello");
+	
+var myJsonString = JSON.stringify(results);
+//alert(myJsonString);
+localStorage.setItem("jsds",myJsonString);
+	document.write(myJsonString);
+    // Do something with the returned Parse.Object values
+    
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+
+
+}
+
+if(ct>=20){
+alert("Question completed");}
+
+else{
+//Parse.initialize("0wcxPuVUCdT2D4mnwlQ79Avo2iC4hYaUlxKJOGYV", "UZIAxj5AmJ3LB8prRiXqTSym0rRSlJQmqq5oDCJw");
+Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+//Again generating the random number
+
+var r=Math.floor(Math.random()*4);
+console.log("cr count "+c[r].count);
+
+//checking if the classes question limit is completed
+//and generating random number until it points to that class whose limit is not completed
+
+while(c[r].count>=5){
+r=Math.floor(Math.random()*4);
+ console.log("fdggdf in while random "+r);
+}
+
+//Making Parse object
+
+var que1=Parse.Object.extend(c[r].name);
+var q1=new que1();
+var ser;
+
+//calling the counting function and using callback function property
+
+counting(function(n){
+
+//Generating the random number for sequence and n defines the no. of rows of that class.
+
+ser=Math.floor((Math.random()*n)+1);
+//Checking if the seq or the question generated randomly has already come or not 
+
+while(c[r].seq.indexOf(ser)!=-1){
+ser=Math.floor((Math.random()*n)+1);
+console.log("in seq while loop "+ser);
+}
+//Making the parse query
+var chq=new Parse.Query(que1);
+console.log("Sqeqwer   "+ser);
+
+chq.equalTo("Seq",ser);
+chq.find({
+//success function of chq starts
+success:function(results){
+var ob=results[0];
+document.getElementById("question").innerHTML=ob.get('Question');
+document.getElementById("optiona").innerHTML=ob.get('Option1');
+document.getElementById("optionb").innerHTML=ob.get('Option2');
+document.getElementById("optionc").innerHTML=ob.get('Option3');
+document.getElementById("optiond").innerHTML=ob.get('Option4');
+
+
+localStorage.setItem("type_ques",r);
+
+localStorage.setItem("corr_ans",ob.get('CorrectAnswer'));
+localStorage.setItem("nahi_kia",r);
+// My code
+var today = new Date();	
+
+starttime = today.getTime();
+
+ person[rt] = starttime;
+ 
+//inserting time array relation
+c[r].assocc.push(rt);
+
+c[r].hard.push(ob.get('HardnessLevel'));
+localStorage.setItem("assume_hard",ob.get('HardnessLevel'));
+
+rt = rt + 1;
+//Pushing the seq into seq array  //My code ends
+
+
+
+
+
+
+c[r].seq.push(ser);
+//Increasing the count of that class
+c[r].count++;
+//Incresing the level type of that class
+c[r].lincr(ob.get('HardnessLevel'));
+
+//Checking the if leveltype reaches the limit
+//If it reaches pushing all the questions'Sequence of that level into sequence array of that class
+//so that to check not more than limit of leveltype questions come
+
+if(c[r].lvl1>=2){
+//if of lvl1 starts
+var ds=new Parse.Query(que1);
+ds.equalTo("HardnessLevel",1);
+ds.find({
+//suucess of ds starts in lvl1 type
+success:function(results){
+for(i=0;i<results.length;i++){
+			var obj=results[i];
+			c[r].seq.push(obj.get('Seq'));
+			}
+			
+}//success of ds ends in lvl1 type
+,error:function(error){
+}
+});
+//if of lvl1 ends
+}
+
+if(c[r].lvl2>=2){
+//if of lvl2 starts
+var ds=new Parse.Query(que1);
+ds.equalTo("HardnessLevel",2);
+ds.find({
+//succes of ds starts in lvl2 type
+   success:function(results){
+     for(i=0;i<results.length;i++){
+			var obj=results[i];
+			c[r].seq.push(obj.get('Seq'));
+		}
+   }//success of ds ends in lvl2 type
+,error:function(error){
+}
+});
+//if of lvl2 ends
+}
+if(c[r].lvl3>=1){
+//if of lvl3 starts
+var ds=new Parse.Query(que1);
+ds.equalTo("HardnessLevel",3);
+ds.find({
+//succes of ds starts in lvl3 type
+success:function(results){
+for(i=0;i<results.length;i++){
+			var obj=results[i];
+			c[r].seq.push(obj.get('Seq'));}
+}//success of ds ends in lvl3 type
+,error:function(error){
+}
+});
+//if of lvl3 ends
+}
+}//success of chq ends
+,error:function(error){
+}
+});
+//the callback function ends
+},r);//counting fucntion ends
+
+//increasing the total count
+ct++;
+
+//else ends
+}
+//onclick function ends
+}
+
+
+
+
+
+
+
+		</script>
+    </body>
+
+</html>

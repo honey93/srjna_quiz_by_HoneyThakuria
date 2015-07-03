@@ -1,0 +1,21 @@
+Parse.initialize("rpBcJyOOmjw19bVdyHFkUkdoKu2eMEEODZjnBZ3a", "DDV0kAeglqE7qKNxxtunlgM16mZfKg9HaV617Raw");
+                            
+							var Qu = Parse.Object.extend("quiz");
+                				var qu=new Qu();
+                var query = new Parse.Query(Qu);
+               
+             query.equalTo("seq",1);
+query.find({
+  success: function(results) {
+    alert("Successfully retrieved " + results.length + " scores.");
+    // Do something with the returned Parse.Object values
+    for (var i = 0; i < results.length; i++) { 
+      var object = results[i];
+      document.getElementById("question").innerHTML=object.get('Question');
+    }
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+var i=2;
