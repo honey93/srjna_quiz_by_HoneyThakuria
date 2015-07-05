@@ -358,16 +358,16 @@ lincr:function(k){switch(k){
 var mem={name:"Memory",
 lvl1:0,
 lvl2:0,
-dur:0,
 tot:0,
+dur:0,
 lvl3:0,
 count:0,
 seq:[],
-sahi_kia:0,
-sec_attempt:0,
-galat_kia:0,
 assocc: [],
+galat_kia:0,
+sec_attempt:0,
 not_attempt:0,
+sahi_kia:0,
 hard: [],
 trueorfalse: [],
 lincr:function(k){switch(k){
@@ -431,6 +431,7 @@ starttime = today.getTime();
 
  person[rt] = starttime;
  
+ c[rand].count++;
 //inserting 
 c[rand].assocc.push(rt);
 
@@ -485,9 +486,28 @@ var ct=Parse.Object.extend(c[x].name);
 function nextq(){
 
 
+//for (i=0; i<c.length; i++)
 
+ //{
 
-if (ct == 1)
+//alert("total" +  c[i].name + "questions" + c[i].count + "level 1 question" + c[i].lvl1 + "level 2 question" + c[i].lvl2 + "level 3 question" + c[i].lvl3);
+//alert("level 1 question" + c[i].lvl1);
+//alert("level 2 question" + c[i].lvl1);
+//alert("level 3 question" + c[i].lvl1);
+ 
+ 
+ //}
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   if (ct == 4)
 
 {
 
@@ -911,7 +931,8 @@ localStorage.setItem("jsds",myJsonString);
 }
 
 if(ct>=20){
-alert("Question completed");}
+alert("Question completed");
+}
 
 else{
 //Parse.initialize("0wcxPuVUCdT2D4mnwlQ79Avo2iC4hYaUlxKJOGYV", "UZIAxj5AmJ3LB8prRiXqTSym0rRSlJQmqq5oDCJw");
@@ -925,7 +946,7 @@ console.log("cr count "+c[r].count);
 //and generating random number until it points to that class whose limit is not completed
 
 while(c[r].count>=5){
-r=Math.floor(Math.random()*4);
+  r=Math.floor(Math.random()*4);
  console.log("fdggdf in while random "+r);
 }
 
@@ -950,7 +971,7 @@ console.log("in seq while loop "+ser);
 }
 //Making the parse query
 var chq=new Parse.Query(que1);
-console.log("Sqeqwer   "+ser);
+console.log("Sqeqwer"+ser);
 
 chq.equalTo("Seq",ser);
 chq.find({
@@ -999,7 +1020,7 @@ c[r].lincr(ob.get('HardnessLevel'));
 //If it reaches pushing all the questions'Sequence of that level into sequence array of that class
 //so that to check not more than limit of leveltype questions come
 
-if(c[r].lvl1>=2){
+if(c[r].lvl1 >=2){
 //if of lvl1 starts
 var ds=new Parse.Query(que1);
 ds.equalTo("HardnessLevel",1);
@@ -1018,7 +1039,7 @@ for(i=0;i<results.length;i++){
 //if of lvl1 ends
 }
 
-if(c[r].lvl2>=2){
+if(c[r].lvl2 >=2){
 //if of lvl2 starts
 var ds=new Parse.Query(que1);
 ds.equalTo("HardnessLevel",2);
@@ -1035,6 +1056,7 @@ ds.find({
 });
 //if of lvl2 ends
 }
+
 if(c[r].lvl3>=1){
 //if of lvl3 starts
 var ds=new Parse.Query(que1);
