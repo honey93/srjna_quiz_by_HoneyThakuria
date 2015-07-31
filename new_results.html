@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+		<script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="http://www.amcharts.com/lib/3/gauge.js"></script>
+        <script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="new_results.css">
+		
+		<script type="text/javascript" >
+		
+		
+		
+					function user_results()
+{
+$("#myModal").modal('hide');
+			var na = document.forms["myForm"]["username"].value;
+
+			//alert(na);
+	//var mmnna = document.forms["myForm"]["rollll"].value;
+			
+			
+//alert("hello");			
+			//event.preventDefault();
+  			
+Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+var GameScore = Parse.Object.extend("Results");
+var query = new Parse.Query(GameScore);
+query.equalTo("Name",na);
+query.find({
+  success: function(results) {
+  //alert("hello");
+   // alert("Successfully retrieved " + results.length + " scores.");
+    // Do something with the returned Parse.Object values
+    for (var i = 0; i < results.length; i++) {
+      var object = results[i];
+	  
+      //alert(object.id + ' - ' + object.get('section_name'));
+    
+	var marks = object.get('sahi_kia');
+	
+	//alert(marks);
+	    var chartdiv =  object.get('section_name');
+		
+		var acc_f  =  object.get('acc_f');
+		var acc_ff = acc_f*100;
+		
+		var time_f = object.get('Time_factor');
+		
+		var time_ff = time_f*100;
+		
+		var value_interval=5;
+		var start_1_value =0;
+		var end_1_value=10;
+		var start_2_value =10;
+		var end_2_value=20;
+		var start_3_value =20;
+		var end_3_value=30;
+		
+		
+		
+		
+		
+if(chartdiv == "Logical")
+		{	
+		
+		 value_interval=2;
+		 start_1_value =0;
+		 end_1_value=4;
+		 start_2_value =4;
+		 end_2_value=8;
+		 start_3_value =8;
+		 end_3_value=12;
+		
+ //alert("log");
+ var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#tlog").css("width", q);
+ document.getElementById("tlog").innerHTML = q;
+ 
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#log").css("width", z);
+ document.getElementById("log").innerHTML = z;
+}
+
+if(chartdiv == "Attention")
+		{
+		
+		 value_interval=2;
+		 start_1_value =0;
+		 end_1_value=4;
+		 start_2_value =4;
+		 end_2_value=8;
+		 start_3_value =8;
+		 end_3_value=12;
+		
+		
+		//alert("att");
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#tatt").css("width", q);
+ document.getElementById("tatt").innerHTML = q;
+ 
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#att").css("width", z);
+ document.getElementById("att").innerHTML = z;
+}
+
+if(chartdiv == "Memory")
+		{
+		 value_interval=2;
+		 start_1_value =0;
+		 end_1_value=4;
+		 start_2_value =4;
+		 end_2_value=8;
+		 start_3_value =8;
+		 end_3_value=12;
+		 
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#tmem").css("width", q);
+ document.getElementById("tmem").innerHTML = q;
+ 
+ var	 x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#mem").css("width", z);
+document.getElementById("mem").innerHTML = z;
+ 
+}
+
+if(chartdiv == "Situation")
+		{
+		
+		 value_interval=2;
+		 start_1_value =0;
+		 end_1_value=4;
+		 start_2_value =4;
+		 end_2_value=8;
+		 start_3_value =8;
+		 end_3_value=12;
+		
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#tsit").css("width", q);
+ document.getElementById("tsit").innerHTML = q;
+ 
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#sit").css("width", z);
+ document.getElementById("sit").innerHTML = z;
+}
+
+if(chartdiv == "total_all")
+		{
+		value_interval=11;
+		 start_1_value =0;
+		 end_1_value=18.33;
+		 start_2_value =18.33;
+		 end_2_value=36.66;
+		 start_3_value =36.66;
+		 end_3_value=55;
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#tot_t").css("width", q);
+ document.getElementById("tot_t").innerHTML = q;
+ 
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#tot").css("width", z);
+ document.getElementById("tot").innerHTML = z;
+}
+
+if(chartdiv == "Quantitative")
+		{
+		
+		 value_interval=2;
+		 start_1_value =0;
+		 end_1_value=4;
+		 start_2_value =4;
+		 end_2_value=8;
+		 start_3_value =8;
+		 end_3_value=12;
+		 
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#tquan").css("width", q);
+ document.getElementById("tquan").innerHTML = q;
+ 
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#quan").css("width", z);
+ document.getElementById("quan").innerHTML = z;
+}
+
+
+		
+if(chartdiv == "level_1")
+		{
+		
+		value_interval=2.5;
+		 start_1_value =0;
+		 end_1_value=3.33;
+		 start_2_value =3.33;
+		 end_2_value=6.66;
+		 start_3_value =6.66;
+		 end_3_value=10;
+		
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#lev1t").css("width", q);
+ document.getElementById("lev1t").innerHTML = q;
+ 
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#lev1").css("width", z);
+ document.getElementById("lev1").innerHTML = z;
+}
+
+if(chartdiv == "level_2")
+		{
+		
+		
+		value_interval=4;
+		 start_1_value =0;
+		 end_1_value=6.66;
+		 start_2_value =6.66;
+		 end_2_value=13.33;
+		 start_3_value =13.33;
+		 end_3_value=20;
+		 
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#lev2t").css("width", q);
+ document.getElementById("lev2t").innerHTML = q;
+ 
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#lev2").css("width", z);
+ document.getElementById("lev2").innerHTML = z;
+}
+
+if(chartdiv == "level_3")
+		{
+		value_interval=5;
+		 start_1_value =0;
+		 end_1_value=8.33;
+		 start_2_value =8.33;
+		 end_2_value=16.66;
+		 start_3_value =16.66;
+		 end_3_value=25;
+		 
+		var p = time_ff.toFixed(2);
+ var q = p + "%";
+ $("#lev3t").css("width", q);
+ document.getElementById("lev3t").innerHTML = q;
+		
+ var x = acc_ff.toFixed(2);
+ var z = x + "%";
+$("#lev3").css("width", z);
+ document.getElementById("lev3").innerHTML = z;
+}		
+		
+		
+		
+		
+		
+		
+		
+	//	 alert(chartdiv);
+	
+	
+	
+			var gaugeChart = AmCharts.makeChart( chartdiv, {
+                                                                                                                                                  "type": "gauge",
+                                                                                                                                                  "theme": "light",
+                                                                                                                                                  "axes": [ {
+                                                                                                                                                    "axisThickness": 1,
+                                                                                                                                                    "axisAlpha": 0.2,
+                                                                                                                                                 "tickAlpha": 0.2,
+                                                                                                                                                    "valueInterval": value_interval,
+                                                                                                                                                    "bands": [ {
+                                                                                                                                                      "color": "#84b761",
+                                                                                                                                                      "endValue": end_1_value,
+                                                                                                                                                      "startValue": start_1_value
+                                                                                                                                                    }, {
+                                                                                                                                                      "color": "#fdd400",
+                                                                                                                                                      "endValue": end_2_value,
+                                                                                                                                                      "startValue": start_2_value
+                                                                                                                                                    }, {
+                                                                                                                                                      "color": "#cc4748",
+                                                                                                                                                      "endValue": end_3_value,
+                                                                                                                                                      "innerRadius": "95%",
+                                                                                                                                                      "startValue": start_3_value
+                                                                                                                                                    } ],
+                                                                                                                                                    "bottomText": "Net Score",
+                                                                                                                                                    "bottomTextYOffset": -20,
+                                                                                                                                                    "endValue": end_3_value
+                                                                                                                                                  } ],
+                                                                                                                                                  "arrows": [ {"value":marks},{"color": "#fdd400", "value":5 } ],
+                                                                                                                                                  "export": {
+                                                                                                                                                    "enabled": true
+                                                                                                                                                  }
+                                                                                                                                                } );
+                                                                                                                                                
+                                                                                                                                             //  setInterval( randomValue, 2000 );
+                                                                                                                                                
+                                                                                                                                                // set random value
+                                                                                                                                                function randomValue() {
+                                                                                                                                                  var value = Math.round( Math.random() * 200 );
+                                                                                                                                                  if ( gaugeChart ) {
+                                                                                                                                                    if ( gaugeChart.arrows ) {
+                                                                                                                                                      if ( gaugeChart.arrows[ 0 ] ) {
+                                                                                                                                                        if ( gaugeChart.arrows[ 0 ].setValue ) {
+                                                                                                                                                          gaugeChart.arrows[ 0 ].setValue( value );
+                                                                                                                                                          gaugeChart.axes[ 0 ].setBottomText( value + " km/h" );
+                                                                                                                                                        }
+                                                                                                                                                      }
+                                                                                                                                                    }
+                                                                                                                                                  }
+                                                                                                                                                }
+        
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+  },
+  error: function(error) {
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+			
+			
+			
+	}		
+			
+                              		
+								$( document ).ready(function() {
+    $("#myModal").modal('show');
+});	                
+                              		
+                              		
+         
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</script>
+		
+		
+		
+		
+		
+    </head>
+    
+    <body>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><span>SRJNA</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="register.html">Quiz</a>
+                        </li>
+                        <li>
+                            <a href="new_results.html">Results</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section section-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center" contenteditable="true">Results of the Quiz</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div id="total_all"></div>
+                    </div>
+                    <div class="col-md-7 text-center">
+                        <h1 class="text-center">Total Score</h1>
+                        <h3 class="text-left">Accuracy factor:-</h3>
+                        <div class="progress">
+                            <div id="tot" class="progress-bar" role="progressbar" style="width: 75%">0.75/1 score</div>
+                        </div>
+                        <h3 class="text-left">Time factor:-</h3>
+                        <div class="progress">
+                            <div id="tot_t" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="text-center">Attention</h2>
+                        <div id="Attention"></div>
+                        <h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div id="att" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        <h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="tatt" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="text-center">Logical</h2>
+                        <div id="Logical"></div>
+                        <h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div id="log" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        <h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="tlog" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="text-center">Memory</h2>
+                        <div id="Memory"></div>
+                        <h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div id="mem" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        <h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="tmem" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="Situation"></div>
+                        <h1 class="text-center">Situation</h1>
+                        <p></p>
+						<h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div id="sit" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+						<h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="tsit" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        
+                      
+                    </div>
+                    <div class="col-md-6">
+                        <div id="Quantitative"></div>
+                        <h1 class="text-center">Quant</h1>
+                        <p></p>
+						<h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div id="quan" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+						<h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="tquan" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2 class="text-center">Level 1</h2>
+                       <div id="level_1"></div>
+                        <h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div class="progress-bar" id="lev1" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        <h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="lev1t" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="text-center">Level 2</h2>
+                       <div id="level_2"></div>
+                        <h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div id="lev2" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        <h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="lev2t" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="text-center">Level 3</h2>
+                        <div id="level_3"></div>
+                        <h3 class="text-left">Accuracy Factor:-</h3>
+                        <div class="progress">
+                            <div id="lev3" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                        <h3 class="text-left">Time Factor:-</h3>
+                        <div class="progress">
+                            <div id="lev3t" class="progress-bar" role="progressbar" style="width: 60%;">60% Complete</div>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Welcome to SRJNA online portal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Provide these details to get your results</p>
+                        <form role="form" name="myForm" onsubmit="return validateForm()">
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputEmail1">Full Name</label>
+                                <input class="form-control" name="username" id="exampleInputEmail1" placeholder="Enter Name">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="exampleInputEmail1"  >Roll No/Email</label>
+                                <input class="form-control" name="rollll" id="exampleInputEmail1" placeholder="Enter Roll NO/Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="sel1">Select class/Optional</label>
+                                <select class="form-control" id="sel1">
+                                    <option>class 6</option>
+                                    <option>class 7</option>
+                                    <option>class 8</option>
+									<option>class 9</option>
+									<option>class 10</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="user_results()">Submit</button>
+                        </form>
+                        <p class="text-warning">
+                            <small>If you don't save, your changes will be lost.</small>
+                        </p>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+		
+		
+        <footer class="section section-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>SRJNA Assessment tool</h1>
+                                    <p>Created By:-<br>Honey Thakuria - thakuria.honey@gmail.com
+									<br>Kirnesh Nandan - krh.ndn@gmail.com</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="text-left">Contact Us
+                            <br>Vivek Pathak: 9953199584
+                            <br>Sharad Bansal: 8527485404</p>
+                        <div class="row">
+                            <div class="col-md-12 hidden-lg hidden-md hidden-sm text-left">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 hidden-xs text-right">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>

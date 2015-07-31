@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato|Lato");
+@import url('https://fonts.googleapis.com/css?family=Lato|Lato');
 /*!
  * Default theme for Pingendo 
  * Homepage: http://pingendo.com  
@@ -18,19 +18,6 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-#chartdiv {
-	width		: 100%;
-	height		: 500px;
-	font-size	: 11px;
-}					
-
-
-.radio-danger input[type="radio"] + label::after {
-  background-color: #d9534f; }
-.radio-danger input[type="radio"]:checked + label::before {
-  border-color: #d9534f; }
-.radio-danger input[type="radio"]:checked + label::after {
-  background-color: #d9534f; }
 body {
   margin: 0;
 }
@@ -3186,7 +3173,7 @@ fieldset[disabled] .btn-success.active {
   background-color: #ffffff;
 }
 .btn-info {
-  color: #000000;
+  color: #ffffff;
   background-color: #5bc0de;
   border-color: #46b8da;
 }
@@ -3196,7 +3183,7 @@ fieldset[disabled] .btn-success.active {
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
-  color: #000000;
+  color: #ffffff;
   background-color: #31b0d5;
   border-color: #269abc;
 }
@@ -3228,10 +3215,10 @@ fieldset[disabled] .btn-info.active {
 }
 .btn-info .badge {
   color: #5bc0de;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 .btn-warning {
-  color: #000000;
+  color: #ffffff;
   background-color: #f0ad4e;
   border-color: #eea236;
 }
@@ -3241,7 +3228,7 @@ fieldset[disabled] .btn-info.active {
 .btn-warning:active,
 .btn-warning.active,
 .open > .dropdown-toggle.btn-warning {
-  color: #000000;
+  color: #ffffff;
   background-color: #ec971f;
   border-color: #d58512;
 }
@@ -3273,7 +3260,7 @@ fieldset[disabled] .btn-warning.active {
 }
 .btn-warning .badge {
   color: #f0ad4e;
-  background-color: #000000;
+  background-color: #ffffff;
 }
 .btn-danger {
   color: #ffffff;
@@ -6581,12 +6568,12 @@ button.close {
  * Licensed under MIT
 */
 /* Google web fonts support */
-/*@import  url("http://fonts.googleapis.com/css?family=");*/
 /* TODO: webkit need this why ?*/
 html,
 body {
   height: 100%;
 }
+/* text-inverse is deprecated */
 .text-inverse {
   color: #ffffff;
 }
@@ -6617,12 +6604,10 @@ body {
 }
 .section {
   position: relative;
-}
-.section > .container > .row {
-  margin: 35px 0px;
+  padding: 35px 0;
 }
 .section .background-image {
-  z-index: -1;
+  z-index: 0;
   position: absolute;
   top: 0px;
   width: 100%;
@@ -6637,20 +6622,36 @@ body {
   background-color: #337cbb !important;
   color: #ffffff;
 }
-.section-primary .text-inverse {
-  color: #000000;
+.section-primary .background-image {
+  opacity: 0.5;
 }
 .section-info {
   background-color: #5bc0de !important;
+  color: #ffffff;
+}
+.section-info .background-image {
+  opacity: 0.5;
 }
 .section-success {
   background-color: #5cb85c !important;
+  color: #ffffff;
+}
+.section-success .background-image {
+  opacity: 0.5;
 }
 .section-warning {
   background-color: #f0ad4e !important;
+  color: #ffffff;
+}
+.section-warning .background-image {
+  opacity: 0.5;
 }
 .section-danger {
   background-color: #d9534f !important;
+  color: #ffffff;
+}
+.section-danger .background-image {
+  opacity: 0.5;
 }
 .cover {
   padding: 30px 15px;

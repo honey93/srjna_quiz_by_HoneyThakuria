@@ -10,6 +10,10 @@
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
         rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="quiz1.css">
+		
+		
+		
+		
     </head>
     
     <body>
@@ -22,12 +26,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><span>Brand</span></a>
+                    <a class="navbar-brand" href="index.html"><span>SRJNA</span></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-ex-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active">
-                            <a href="Untitled.html">Home</a>
+                            <a href="index.html">Home</a>
                         </li>
                         <li>
                             <a href="#">Contacts</a>
@@ -41,6 +45,7 @@
                 <div class="row" id="headsuper">
                     <div class="col-md-12" id="headtop">
                         <div class="page-header" id="headas">
+		                <div>   Minutes Remaining:	<span id="timer">30:00</span> </div>
                             <h1>Quiz-competition
                                 <font color="#777777">
                                     <span style="font-size: 23.3999996185303px; line-height: 23.3999996185303px;">All questions are compulsory, No negative marking</span>
@@ -81,10 +86,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h1>Footer header</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
-                            <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                            <br>Ut enim ad minim veniam, quis nostrud</p>
+                        <h1>SRJNA Student Assessment Tool</h1>
+                        <p>Created By,
+                            <br>thakuria.honey@gmail.com
+                            <br>krn.ndn@gmail.com</p>
                     </div>
                     <div class="col-sm-6">
                         <p class="text-info text-right">
@@ -111,8 +116,63 @@
                 </div>
             </div>
         </footer>
-        <script>
 		
+		
+		<script type="text/javascript">
+		//window.onload = function(){
+function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        var counter = document.getElementById("timer");
+        var current_minutes = mins-1
+        seconds--;
+        counter.innerHTML = 
+current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+             
+            if(mins > 1)
+			
+			{
+                 
+               // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst    
+               setTimeout(function () { countdown(mins - 1); }, 1000);
+                     
+            }
+			else{//alert("hello"); 
+			
+			
+			 
+			  ct = 25;
+			  right_ans();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			}
+			
+        }
+    }
+    tick();
+}
+ 
+countdown(30);
+ //}
+</script>
+		
+		
+		
+		
+		
+        <script type="text/javascript">
+		window.onload = function(){
 		var net_sahi_kia = 0;
 		var net_attempt_kia = 0;
 		var total_all = 0;
@@ -252,16 +312,12 @@ var rand;
 //Variable lvl1,lvl2,lvl3 signifies the no. of that levle question of that class
 //Sequence array is storing the sequence which are already used
 //count is for counting the no. of questions of that class
-
-var starttime =0;
+var starttime = 0;
 var person = [];
 var rt = 0;
 var total_all = 0;
 var total_dur = 0;
-
-
 var Level1={
-
 name:"level_1",
 exact_marks:0,
 exact_time:0,
@@ -270,11 +326,8 @@ exact_dur:0,
 sahi_kia:0,
 galat_kia:0,
 attempt_kia:0
-
 };
-
 var Level2={
-
 name:"level_2",
 exact_marks:0,
 exact_time:0,
@@ -283,12 +336,8 @@ exact_dur:0,
 sahi_kia:0,
 galat_kia:0,
 attempt_kia:0
-
 };
-
-
 var Level3={
-
 name:"level_3",
 exact_marks:0,
 exact_time:0,
@@ -297,17 +346,8 @@ exact_dur:0,
 sahi_kia:0,
 galat_kia:0,
 attempt_kia:0
-
 };
-
-
-
-
 var stages=[Level1,Level2,Level3];
-
-
-
-
 var log={
 name:"Logical",
 lvl1:0,
@@ -345,6 +385,29 @@ sec_attempt:0,
 galat_kia:0,
 not_attempt:0,
 assocc: [],
+hard: [],
+trueorfalse: [],
+lincr:function(k){switch(k){
+                  case 1:this.lvl1++;
+                  break;
+                  case 2:this.lvl2++;
+                  break;
+                  default:this.lvl3++;
+                  }}
+};
+var quan={name:"Quantitative",
+lvl1:0,
+lvl2:0,
+tot:0,
+dur:0,
+lvl3:0,
+count:0,
+seq:[],
+assocc: [],
+galat_kia:0,
+sec_attempt:0,
+not_attempt:0,
+sahi_kia:0,
 hard: [],
 trueorfalse: [],
 lincr:function(k){switch(k){
@@ -402,10 +465,10 @@ lincr:function(k){switch(k){
                   }}
 };
 //Generating Random_number in variable rand
-rand=Math.floor(Math.random()*4);
+rand=Math.floor(Math.random()*5);
 //Array of objects of tables to access the class randomly
 localStorage.setItem("type_ques",rand);
-var c=[att,log,mem,sit];
+var c=[att,log,mem,sit,quan];
 //Making parse object
 var que=Parse.Object.extend(c[rand].name);
 var q=new que();
@@ -421,42 +484,28 @@ document.getElementById("optiona").innerHTML=owe.get('Option1');
 document.getElementById("optionb").innerHTML=owe.get('Option2');
 document.getElementById("optionc").innerHTML=owe.get('Option3');
 document.getElementById("optiond").innerHTML=owe.get('Option4');
-
-
-
-
 var today = new Date();	
-
 starttime = today.getTime();
-
  person[rt] = starttime;
  
  c[rand].count++;
 //inserting 
 c[rand].assocc.push(rt);
-
 c[rand].hard.push(owe.get('HardnessLevel'));
-
 //storing hardness level
 localStorage.setItem("assume_hard",owe.get('HardnessLevel'));
-
 rt = rt + 1;
 localStorage.setItem("nahi_kia",rand);
 localStorage.setItem("corr_ans",owe.get('CorrectAnswer'));
-
-
 //Increasing the lvl type of that class
 c[rand].lincr(owe.get('HardnessLevel'));
 //Pushing the used sequence in the seq array so that it cant come again
 c[rand].seq.push(1);}
 //ending the success
-
 ,error:function(error){
 //The request failed
 }
 });
-
-
 //The function is for counting the rows of that class so that the sequence can be generated randomly
 //We are using callback function because the n object is destroyed
 function counting(callback,x){
@@ -477,19 +526,10 @@ var ct=Parse.Object.extend(c[x].name);
   }
 });
 }
-
-
-
-
 //Calling onclick function 
-
 function nextq(){
-
-
 //for (i=0; i<c.length; i++)
-
  //{
-
 //alert("total" +  c[i].name + "questions" + c[i].count + "level 1 question" + c[i].lvl1 + "level 2 question" + c[i].lvl2 + "level 3 question" + c[i].lvl3);
 //alert("level 1 question" + c[i].lvl1);
 //alert("level 2 question" + c[i].lvl1);
@@ -497,7 +537,6 @@ function nextq(){
  
  
  //}
-
    
    
    
@@ -507,24 +546,15 @@ function nextq(){
    
    
    
-   if (ct == 4)
-
+   if (ct >= 25 )
 {
-
-
-alert("It's enough, go and see results");
-
+//alert("Test is ove. Wait for the results");
 var today = new Date();	
-
 starttime = today.getTime();
-
  person[rt] = starttime;
  
-
 for (i=0; i<c.length; i++)
-
  {
-
   net_sahi_kia = net_sahi_kia + c[i].sahi_kia;
   net_attempt_kia = net_attempt_kia + c[i].sahi_kia + c[i].galat_kia;
   
@@ -584,32 +614,25 @@ for (i=0; i<c.length; i++)
 	 
 	 
 	 }
-
 }
-
-
 //alert("net_sahi_kia");
 //alert(net_sahi_kia);
 //alert("net_attemp_kia");
 //alert(net_attempt_kia);
-
-
 for(i=0;i<c.length;i++)
 {
-
 var school_nam = "Results";
 var acc_factor = 0;
 var acc_f = 0;
 var fact = 0;
 var chu = 0;
-event.preventDefault();
+//event.preventDefault();
   			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
 			
 			
-
    		  	total_all = total_all + c[i].tot; 
 		    total_dur =  total_dur + c[i].dur;
-            fact = (-1)*(0.7)*(c[i].dur);
+            fact = (-1)*(0.1)*(c[i].dur);
 			chu = Math.pow(2.7, fact);
 			
 			//alert("e raise ki value");
@@ -631,6 +654,7 @@ var GameScore = Parse.Object.extend(school_nam);
 		gameScore.set("attempt_kia", c[i].sec_attempt);
 		gameScore.set("net_score", acc_factor);
 		gameScore.set("acc_f", acc_f);
+		gameScore.set("Time_factor", chu);
         		
 		
 		
@@ -660,41 +684,20 @@ var GameScore = Parse.Object.extend(school_nam);
     	alert('Failed to create new object, with error code: ' + error.message);
   		}
 						 }); 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 for(i=0;i<stages.length;i++)
 {
-
 var laval_nam = stages[i].name; 
 var acc_factor = 0;
 var acc_f = 0;
 var fact = 0;
 var chu = 0;
-event.preventDefault();
+//event.preventDefault();
   			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
 			
 			
-
-   		  	fact = (-1)*(0.7)*(stages[i].exact_dur);
-			chu = Math.pow(2.7, fact);
+   		  	fact = (-1)*(0.1)*(stages[i].exact_dur);
+			chu = Math.pow(2.7,fact);
 			
 			//alert("e raise ki value");
 			//alert(chu);
@@ -703,7 +706,7 @@ event.preventDefault();
 			//alert(acc_factor);
                 acc_f  =  ((stages[i].sahi_kia)/(stages[i].attempt_kia));			
 			
-var GameScore = Parse.Object.extend("Results");
+      var GameScore = Parse.Object.extend("Results");
 		var gameScore = new GameScore();	
 		
 		
@@ -715,6 +718,7 @@ var GameScore = Parse.Object.extend("Results");
 		gameScore.set("attempt_kia", stages[i].attempt_kia);
 		gameScore.set("net_score", acc_factor);
 		gameScore.set("acc_f", acc_f);
+		gameScore.set("Time_factor",chu);
         		
 		
 		
@@ -744,90 +748,20 @@ var GameScore = Parse.Object.extend("Results");
     	alert('Failed to create new object, with error code: ' + error.message);
   		}
 						 }); 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
-
 var acc_factor = 0;
 var acc_f = 0;
 var fact = 0;
 var chu = 0;
-
-event.preventDefault();
+//event.preventDefault();
   			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
 school_namee ="Results"
-
 var GameScore = Parse.Object.extend(school_namee);
 		var gameScore = new GameScore();	
-
-
-        fact = (-1)*(0.7)*(total_dur);
+        fact = (-1)*(0.02)*(total_dur);
 			chu = Math.pow(2.7, fact);
-			
+			//alert("total time factor is " + chu);
 			//alert("e raise ki value");
 			//alert(chu);
 			acc_factor = (total_all)*((net_sahi_kia)/(net_attempt_kia))*chu;
@@ -836,7 +770,6 @@ var GameScore = Parse.Object.extend(school_namee);
                 acc_f  =  ((net_sahi_kia)/(net_attempt_kia));			
 			
 	
-
    gameScore.set("section_name", "total_all");
 	gameScore.set("total_marks", total_all);
 		gameScore.set("total_time_taken", total_dur);
@@ -845,8 +778,11 @@ var GameScore = Parse.Object.extend(school_namee);
 		gameScore.set("attempt_kia", net_attempt_kia);
 		gameScore.set("net_score", acc_factor);
 		gameScore.set("acc_f", acc_f);
+		gameScore.set("Time_factor", chu);
         		
-		
+		localStorage.setItem("score_got",total_all);
+		localStorage.setItem("score_attempt", net_attempt_kia);
+		localStorage.setItem("score_correct_attempt",net_sahi_kia);
 		
 		gameScore.set("Name",localStorage.getItem("user_name_aut"));
 		gameScore.set("Rollno",localStorage.getItem("rollno_user"));
@@ -854,7 +790,8 @@ var GameScore = Parse.Object.extend(school_namee);
 		gameScore.save(null, {
   		success: function(gameScore) {
     	
-		alert("total_done buddy");
+		window.open ('Score_card.html','_self',false);
+		//alert("total_done buddy");
     	
     	
     	
@@ -875,38 +812,14 @@ var GameScore = Parse.Object.extend(school_namee);
   		}
 						 }); 
 		
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
 }
-
-
 //checking if the question set is completed
-
-
 if(ct==120)
-
 {
-
 	var school_name = "mgd";
-
-
-
 event.preventDefault();
   			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
-
-
 var GameScore = Parse.Object.extend(school_name);
 //var GameScore = Parse.Object.extend("GameScore");
 var query = new Parse.Query(GameScore);
@@ -926,45 +839,29 @@ localStorage.setItem("jsds",myJsonString);
     alert("Error: " + error.code + " " + error.message);
   }
 });
-
-
-}
-
-if(ct>=20){
-alert("Question completed");
 }
 
 else{
 //Parse.initialize("0wcxPuVUCdT2D4mnwlQ79Avo2iC4hYaUlxKJOGYV", "UZIAxj5AmJ3LB8prRiXqTSym0rRSlJQmqq5oDCJw");
 Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
 //Again generating the random number
-
-var r=Math.floor(Math.random()*4);
+var r=Math.floor(Math.random()*5);
 console.log("cr count "+c[r].count);
-
 //checking if the classes question limit is completed
 //and generating random number until it points to that class whose limit is not completed
-
 while(c[r].count>=5){
-  r=Math.floor(Math.random()*4);
+  r=Math.floor(Math.random()*5);
  console.log("fdggdf in while random "+r);
 }
-
 //Making Parse object
-
 var que1=Parse.Object.extend(c[r].name);
 var q1=new que1();
 var ser;
-
 //calling the counting function and using callback function property
-
 counting(function(n){
-
 //Generating the random number for sequence and n defines the no. of rows of that class.
-
 ser=Math.floor((Math.random()*n)+1);
 //Checking if the seq or the question generated randomly has already come or not 
-
 while(c[r].seq.indexOf(ser)!=-1){
 ser=Math.floor((Math.random()*n)+1);
 console.log("in seq while loop "+ser);
@@ -972,7 +869,6 @@ console.log("in seq while loop "+ser);
 //Making the parse query
 var chq=new Parse.Query(que1);
 console.log("Sqeqwer"+ser);
-
 chq.equalTo("Seq",ser);
 chq.find({
 //success function of chq starts
@@ -983,43 +879,28 @@ document.getElementById("optiona").innerHTML=ob.get('Option1');
 document.getElementById("optionb").innerHTML=ob.get('Option2');
 document.getElementById("optionc").innerHTML=ob.get('Option3');
 document.getElementById("optiond").innerHTML=ob.get('Option4');
-
-
 localStorage.setItem("type_ques",r);
-
 localStorage.setItem("corr_ans",ob.get('CorrectAnswer'));
 localStorage.setItem("nahi_kia",r);
 // My code
 var today = new Date();	
-
 starttime = today.getTime();
-
  person[rt] = starttime;
  
 //inserting time array relation
 c[r].assocc.push(rt);
-
 c[r].hard.push(ob.get('HardnessLevel'));
 localStorage.setItem("assume_hard",ob.get('HardnessLevel'));
-
 rt = rt + 1;
 //Pushing the seq into seq array  //My code ends
-
-
-
-
-
-
 c[r].seq.push(ser);
 //Increasing the count of that class
 c[r].count++;
 //Incresing the level type of that class
 c[r].lincr(ob.get('HardnessLevel'));
-
 //Checking the if leveltype reaches the limit
 //If it reaches pushing all the questions'Sequence of that level into sequence array of that class
 //so that to check not more than limit of leveltype questions come
-
 if(c[r].lvl1 >=2){
 //if of lvl1 starts
 var ds=new Parse.Query(que1);
@@ -1038,7 +919,6 @@ for(i=0;i<results.length;i++){
 });
 //if of lvl1 ends
 }
-
 if(c[r].lvl2 >=2){
 //if of lvl2 starts
 var ds=new Parse.Query(que1);
@@ -1056,7 +936,6 @@ ds.find({
 });
 //if of lvl2 ends
 }
-
 if(c[r].lvl3>=1){
 //if of lvl3 starts
 var ds=new Parse.Query(que1);
@@ -1079,22 +958,15 @@ for(i=0;i<results.length;i++){
 });
 //the callback function ends
 },r);//counting fucntion ends
-
 //increasing the total count
 ct++;
-
 //else ends
 }
 //onclick function ends
 }
+	
 
-
-
-
-
-
-
-		</script>
+}	</script>
     </body>
 
 </html>
