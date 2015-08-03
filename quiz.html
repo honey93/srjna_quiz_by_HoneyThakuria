@@ -45,7 +45,7 @@
                 <div class="row" id="headsuper">
                     <div class="col-md-12" id="headtop">
                         <div class="page-header" id="headas">
-		                <div>   Minutes Remaining:	<span id="timer">30:00</span> </div>
+		                <div>   Minutes Remaining:	<span id="timer">10:00</span> </div>
                             <h1>Quiz-competition
                                 <font color="#777777">
                                     <span style="font-size: 23.3999996185303px; line-height: 23.3999996185303px;">All questions are compulsory, No negative marking</span>
@@ -55,9 +55,9 @@
                     </div>
                 </div>
 				<form name="myForm">
-                <div class="row">
+                <div class="row">	
                     <div class="col-md-12 pr">
-                        <h1 contenteditable="true" id="question">Q1 When you mix oil with water, what happens ?</h1>
+                        <h1 contenteditable="false" > Q<span id="q_no"> 1 </span>  )   <span id="question"> "Test is about to begin in next few seconds </span></h1>
                         <div class="radio">
                             <label>
                                 <input type="radio" id="a" name="optradio" value="1">
@@ -163,7 +163,7 @@ current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
     tick();
 }
  
-countdown(30);
+countdown(10);
  //}
 </script>
 		
@@ -294,15 +294,13 @@ countdown(30);
 		}
 		}
 		
-		document.getElementById('a').checked = false;
-		 document.getElementById('b').checked = false;
-		 document.getElementById('c').checked = false;
-		 document.getElementById('d').checked = false;
+		
 		
 		nextq();
 		
 		}
-		Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
+		
+Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
             
 //Parse.initialize("0wcxPuVUCdT2D4mnwlQ79Avo2iC4hYaUlxKJOGYV", "UZIAxj5AmJ3LB8prRiXqTSym0rRSlJQmqq5oDCJw");
 //Variable ct is for counting total no. of questions
@@ -530,7 +528,7 @@ var ct=Parse.Object.extend(c[x].name);
 function nextq(){
 //for (i=0; i<c.length; i++)
  //{
-//alert("total" +  c[i].name + "questions" + c[i].count + "level 1 question" + c[i].lvl1 + "level 2 question" + c[i].lvl2 + "level 3 question" + c[i].lvl3);
+//alert("total" +  c[i].name + "questions" + c[i].count + "level 1 question" + c[i].lvl1 + "level 2 question" + c[i].lvl2 + "level 3 question" + c[i].lvl3 + "counter" + ct);
 //alert("level 1 question" + c[i].lvl1);
 //alert("level 2 question" + c[i].lvl1);
 //alert("level 3 question" + c[i].lvl1);
@@ -546,9 +544,9 @@ function nextq(){
    
    
    
-   if (ct >= 25 )
+   if ( ct >= 25 )
 {
-//alert("Test is ove. Wait for the results");
+alert("Test is over. Wait for the results");
 var today = new Date();	
 starttime = today.getTime();
  person[rt] = starttime;
@@ -794,7 +792,7 @@ var GameScore = Parse.Object.extend(school_namee);
 		//alert("total_done buddy");
     	
     	
-    	
+    	//alert("can't open");
     	
     	//event.preventDefault();
     	//var q = localStorage.getItem("lastname");
@@ -814,32 +812,10 @@ var GameScore = Parse.Object.extend(school_namee);
 		
 }
 }
+
+
 //checking if the question set is completed
-if(ct==120)
-{
-	var school_name = "mgd";
-event.preventDefault();
-  			Parse.initialize("GOz4H9uZbN1pRGR4DxERGWBF9fbUGn8o77UEeQIn", "7eizxicb7Ir2CSaRSGmUqVhQ1N2lU3VDih1ytuaR");
-var GameScore = Parse.Object.extend(school_name);
-//var GameScore = Parse.Object.extend("GameScore");
-var query = new Parse.Query(GameScore);
-query.equalTo("Name", "mahesh");
-query.find({
-  success: function(results) {
-    alert("hello");
-	
-var myJsonString = JSON.stringify(results);
-//alert(myJsonString);
-localStorage.setItem("jsds",myJsonString);
-	document.write(myJsonString);
-    // Do something with the returned Parse.Object values
-    
-  },
-  error: function(error) {
-    alert("Error: " + error.code + " " + error.message);
-  }
-});
-}
+
 
 else{
 //Parse.initialize("0wcxPuVUCdT2D4mnwlQ79Avo2iC4hYaUlxKJOGYV", "UZIAxj5AmJ3LB8prRiXqTSym0rRSlJQmqq5oDCJw");
@@ -874,11 +850,19 @@ chq.find({
 //success function of chq starts
 success:function(results){
 var ob=results[0];
+
+document.getElementById('a').checked = false;
+		 document.getElementById('b').checked = false;
+		 document.getElementById('c').checked = false;
+		 document.getElementById('d').checked = false;
+
+
 document.getElementById("question").innerHTML=ob.get('Question');
 document.getElementById("optiona").innerHTML=ob.get('Option1');
 document.getElementById("optionb").innerHTML=ob.get('Option2');
 document.getElementById("optionc").innerHTML=ob.get('Option3');
 document.getElementById("optiond").innerHTML=ob.get('Option4');
+document.getElementById('q_no').innerHTML = ct;
 localStorage.setItem("type_ques",r);
 localStorage.setItem("corr_ans",ob.get('CorrectAnswer'));
 localStorage.setItem("nahi_kia",r);
@@ -961,6 +945,7 @@ for(i=0;i<results.length;i++){
 //increasing the total count
 ct++;
 //else ends
+
 }
 //onclick function ends
 }
