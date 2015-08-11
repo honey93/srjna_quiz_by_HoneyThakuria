@@ -19,7 +19,21 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+#avg_class {
+  color: #fdd400;
+}
+#acc_qw{
+margin-left: 35px;
+}
 
+#acc_qx{
+margin-left: 90px;
+}
+
+#guide{
+
+border: 1px black; 
+}
 
 
 
